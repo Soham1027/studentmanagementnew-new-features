@@ -1,0 +1,63 @@
+{% extends "extends/basetemp.html" %}
+
+{% block content %}
+   <div class="content container-fluid">
+               <div class="page-header">
+                  <div class="row align-items-center">
+                     <div class="col">
+                        <h3 class="page-title">Students</h3>
+                        <ul class="breadcrumb">
+                           <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                           <li class="breadcrumb-item active">Students</li>
+                        </ul>
+                     </div>
+                    </div>
+               </div>
+                 {% include "includes/messages.html" %}
+                   
+               <div class="row">
+                  <div class="col-sm-12">
+                     <div class="card card-table">
+                        <div class="card-body">
+                           <div class="table-responsive">
+                              <table id="table_id" class="table table-hover table-center mb-0 datatable">
+                                 <thead>
+                                    <tr>
+                                       <th>ID</th>
+                                       <th>Name</th>
+                                       <th>Email</th>
+                                       <th>Gender</th>
+                                       <th>Created_at</th>
+                                       <th>Updated_at</th>
+                                 
+                                    </tr>
+                                 </thead>
+                                 <tbody>
+                                   {% for b in student  %}
+                                   <tr>
+                                    <td>{{b.id}}</td>
+
+                                      
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html">{{b.admin.username}}</a>
+                                          </h2>
+                                       </td>
+                                       <td> {{b.admin.email}}</td>
+                                       <td>{{b.gender}}</td>
+                                       <td>{{b.created_at}}</td>
+                                       <td>{{b.updated_at}}</td>
+                                    
+
+                                      </tr>
+                                   {%endfor%}
+                                 </tbody>
+                              </table>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+{% endblock %}
+   

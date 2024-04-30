@@ -1,0 +1,75 @@
+{% extends "extends/basetemp.html" %} {% block content %}
+<div class="content container-fluid">
+  <div class="page-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h3 class="page-title">TimeTable</h3>
+        <ul class="breadcrumb">
+          <li class="breadcrumb-item">Dashboard</li>
+          <li class="breadcrumb-item active">TimeTable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  {% include "includes/messages.html" %}
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card card-table">
+        <div class="card-body">
+          
+            <table id="table_id" class="table table-borderless">
+              <thead class="border-bottom font-weight-bold">
+                <tr>
+                  <td>Name</td>
+                  <td>class</td>
+                  <td>Section</td>
+                  <td>Subject</td>
+                  <td>stattime</td>
+                  <td>endtime</td>
+                  <td>action</td>
+                </tr>
+              </thead>
+              <tbody>
+                {% for t in viewtt %}
+                <tr>
+                  <td>{{t.name}}</td>
+                  <td>{{t.class_name}}</td>
+                  <td>{{t.section_name}}</td>
+                  <td>{{t.subject}}</td>
+                  <td>{{t.start_time}}</td>
+                  <td>{{t.end_time}}</td>
+
+                  <td>
+                    <a
+                      href="{% url 'updatett' t.id%}"
+                      class="btn text-secondary px-0"
+                    >
+                      <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form
+                      action="{% url 'deletett' t.id %}"
+                      method="post"
+                      class="d-inline"
+                    >
+                      {% csrf_token %}
+                      <button type="submit" class="btn">
+                        <i
+                          class="far fa-trash-alt fa-lg text-danger float-right"
+                        ></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+
+                {% endfor %}
+              </tbody>
+
+              {% endblock content %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

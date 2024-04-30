@@ -1,0 +1,48 @@
+{% extends "extends/base2.html" %}
+
+{% block content %}
+  <table class="table table-borderless">
+
+    <thead class="border-bottom font-weight-bold">
+       <tr>
+        <td>Sno</td> 
+        <td>Name</td> 
+        <td>Email</td>
+        <td>Phone</td>
+        <td>
+            <a href="{% url 'update' %}" class="btn btn-outline-success">
+                <i class="fas fa-plus">Add New</i>
+            </a>
+            
+        </td>
+       </tr>
+    </thead>
+    <tbody>
+      <hr>
+     {% for i in list %}
+         
+         <tr>
+         <td scope="row">{{i.id}}</td>
+         <td>{{i.name}}</td>
+         <td>{{i.email}}</td>
+         <td>{{i.phone_number}}</td>
+
+         <td>
+            <a href="{% url 'edit' i.id%}" class="btn text-secondary px-0">
+                <i class="far fa-edit fa-lg"></i>
+            </a>
+                <form action="{% url 'delete' i.id %}" method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn">
+                    <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                </button>
+            </form>
+   
+         </td>
+         
+     {% endfor %}
+         </tbody>
+
+  </table>
+  {%  %}
+   

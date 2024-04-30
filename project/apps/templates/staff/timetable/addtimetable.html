@@ -1,0 +1,7 @@
+{% extends "extends/base2.html" %} {% block content %}
+<form action="" method="post" autocomplete="off">
+  <h3>TimeTable</h3>
+  {% csrf_token %} {{form.as_p}}
+  <button type="submit">Submit</button>
+</form>
+{% endblock content %}

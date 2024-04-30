@@ -1,0 +1,38 @@
+{% extends "extends/basetemp.html" %}
+{% block content %}
+   <table id="table_id" class="table table-borderless">
+
+    <thead class="border-bottom font-weight-bold">
+       <tr>
+        <td>Name</td> 
+        <td>class</td> 
+        <td>Section</td>
+        <td>Subject</td>
+        <td>stattime</td>
+        <td>endtime</td>
+       
+        </tr>
+        </thead>
+        <tbody>
+            {% for t in viewtt %}
+                <tr>
+                    <td>{{t.name}}</td>
+                    <td>{{t.class_name}}</td>
+                    <td>{{t.section_name}}</td>
+                    <td>{{t.subject}}</td>
+                    <td>{{t.start_time}}</td>
+                    <td>{{t.end_time}}</td>
+
+                   
+
+
+                </tr>
+              
+            {% endfor %}
+
+
+        </tbody>
+        
+        
+      
+{% endblock content %}
